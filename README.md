@@ -10,7 +10,7 @@ The already existing plane will be changed to a UFO, and will move super rapidly
 - Done! Final UFO Speed is up for changes.
 
 To win the game, a player must blow up the UFO. 
-- 
+- Done with flag set in gameControl
 
 This will trigger an end cutscene, portraying the demise of the alien attackers. 
 - 
@@ -19,6 +19,8 @@ In addition, we will enhance the game’s graphics by drawing buildings on the s
 - 
 
 To increase this effect, enemy missiles will also explode upon impact when they hit the bottom of the screen.
-- 
+- Done! They still count as impacted missiles though. This will make the game slightly easier which is okay.
 
 (Extra) UFO spawns at random times in game.
+
+(Extra) UFO has randomized path.

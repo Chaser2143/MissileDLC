@@ -30,8 +30,15 @@ missile_t *player_missiles = &(missiles[CONFIG_MAX_ENEMY_MISSILES]); //Start of 
 
 static bool first_half = true;
 
+static bool game_over = false;
+
 static uint16_t number_player_missiles_shot = 0;
 static uint16_t number_enemy_missiles_impacted = 0;
+
+//Returns if the game is over or not
+bool getGameStatus(){
+    return game_over;
+}
 
 //Draw the stats at the top of the screen
 void drawStats(uint16_t color){
@@ -165,6 +172,7 @@ void gameControl_tick(){
     for(uint16_t i=0; i < CONFIG_MAX_TOTAL_MISSILES; i++){
         if(missiles[i].radius > computeDistance(planeCoords.x, planeCoords.y, missiles[i].x_current, missiles[i].y_current)){
             plane_explode(); //Set the plane to explode and move on
+            game_over = true; //End the game
             break;
         }
     }

@@ -13,4 +13,7 @@ void gameControl_init();
 // and updating statistics.
 void gameControl_tick();
 
+//Returns a bool of whether or not the game is over
+bool getGameStatus();
+
 #endif /* GAMECONTROL */
