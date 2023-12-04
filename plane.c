@@ -16,7 +16,11 @@
 #define EIGHT_SECONDS 8
 
 #define PLANE_TRIANGLE_LENGTH 20
-#define PLANE_TRIANGLE_HEIGHT 5
+#define HALF_PLANE_TRIANGLE_LENGTH 10
+#define PLANE_TRIANGLE_HEIGHT 3
+#define UFO_TOP_HEIGHT 3
+#define UFO_TOP_RADIUS 2
+
 
 #define PLANE_INIT_MSG "In Plane Init State \n"
 #define PLANE_MOVE_MSG "In Plane Move State \n"
@@ -104,10 +108,12 @@ void planeUpdateLocation(){
 //Draws and Erases the Plan
 void drawPlane(bool erase){
     if(erase){
-        display_fillTriangle(x_current, y_current, x_current+PLANE_TRIANGLE_LENGTH, y_current-PLANE_TRIANGLE_HEIGHT, x_current+PLANE_TRIANGLE_LENGTH, y_current+PLANE_TRIANGLE_HEIGHT, DISPLAY_BLACK);//Erase the plane
+        display_fillCircle(x_current+HALF_PLANE_TRIANGLE_LENGTH, y_current-UFO_TOP_HEIGHT, UFO_TOP_RADIUS, DISPLAY_BLACK);//Draw the UFO TOP
+        display_fillTriangle(x_current, y_current, x_current+PLANE_TRIANGLE_LENGTH, y_current, x_current+HALF_PLANE_TRIANGLE_LENGTH, y_current-PLANE_TRIANGLE_HEIGHT, DISPLAY_BLACK);//Erase the plane
     }
     else{
-        display_fillTriangle(x_current, y_current, x_current+PLANE_TRIANGLE_LENGTH, y_current-PLANE_TRIANGLE_HEIGHT, x_current+PLANE_TRIANGLE_LENGTH, y_current+PLANE_TRIANGLE_HEIGHT, DISPLAY_WHITE);//Draw the plane
+        display_fillTriangle(x_current, y_current, x_current+PLANE_TRIANGLE_LENGTH, y_current, x_current+HALF_PLANE_TRIANGLE_LENGTH, y_current-PLANE_TRIANGLE_HEIGHT, DISPLAY_WHITE);//Draw the plane
+        display_fillCircle(x_current+HALF_PLANE_TRIANGLE_LENGTH, y_current-UFO_TOP_HEIGHT, UFO_TOP_RADIUS, DISPLAY_GREEN);//Draw the UFO TOP
     }
 }
 
