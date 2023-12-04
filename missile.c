@@ -9,6 +9,10 @@
 
 #define SCREEN_WIDTH 320 //Display Width
 #define SCREEN_HEIGHT 240 //Display Height
+// Launch site coordinates
+#define LAUNCH_SITE_ONE 80
+#define LAUNCH_SITE_TWO 160
+#define LAUNCH_SITE_THREE 240
 
 #define ENEMY_MISSILE_START_HEIGHT 30 //Start height of enemy missiles
 
@@ -113,11 +117,11 @@ void missile_init_enemy(missile_t *missile){
 
 //Return the closest launch site x value
 uint16_t getClosestLaunchSite(uint16_t x_dest){
-    uint16_t launchSiteOne = 80;
-    uint16_t launchSiteTwo = 160;
-    uint16_t launchSiteThree = 240;
-    uint16_t difference = 320;
-    uint16_t min = 320; //Set default min bigger than all choices
+    uint16_t launchSiteOne = LAUNCH_SITE_ONE;
+    uint16_t launchSiteTwo = LAUNCH_SITE_TWO;
+    uint16_t launchSiteThree = LAUNCH_SITE_THREE;
+    uint16_t difference = SCREEN_WIDTH;
+    uint16_t min = SCREEN_WIDTH; //Set default min bigger than all choices
 
     //Check which of the 3 launch sites it is closest to and return it
     if(abs(launchSiteThree - x_dest) <= difference){
@@ -233,7 +237,7 @@ void drawCircle(missile_t *missile, bool draw){
         }
     }
     else{ //erase case
-        display_fillCircle(missile->x_current, missile->y_current, missile->radius ,DISPLAY_BLACK);
+        display_fillCircle(missile->x_current, missile->y_current, missile->radius, DISPLAY_BLACK);
     }
 }
 
