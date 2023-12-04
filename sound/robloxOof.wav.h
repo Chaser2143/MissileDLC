@@ -1,4 +1,0 @@
-extern uint16_t robloxOof[];
-#define ROBLOX_OOF_SAMPLE_RATE 44100
-#define ROBLOX_OOF_BITS_PER_SAMPLE 24
-#define ROBLOX_OOF_NUMBER_OF_SAMPLES 8032

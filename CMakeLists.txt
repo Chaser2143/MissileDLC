@@ -6,7 +6,8 @@
 # target_link_libraries(lab8_m2.elf ${330_LIBS} interrupts intervalTimer touchscreen)
 # set_target_properties(lab8_m2.elf PROPERTIES LINKER_LANGUAGE CXX)
 
-add_executable(lab9.elf main_m3.c missile.c gameControl.c plane.c)
-target_link_libraries(lab9.elf ${330_LIBS} interrupts intervalTimer touchscreen)
+add_subdirectory(sounds)
+add_executable(lab9.elf main_m3.c missile.c gameControl.c plane.c sound.c timer_ps.c)
+target_link_libraries(lab9.elf ${330_LIBS} interrupts intervalTimer touchscreen sounds)
 set_target_properties(lab9.elf PROPERTIES LINKER_LANGUAGE CXX)
 target_compile_definitions(lab9.elf PUBLIC LAB8_M3)

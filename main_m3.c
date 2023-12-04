@@ -7,6 +7,7 @@
 #include "interrupts.h"
 #include "intervalTimer.h"
 #include "touchscreen.h"
+#include "sound.h"
 
 #define RUNTIME_S 60
 #define RUNTIME_TICKS ((int)(RUNTIME_S / CONFIG_GAME_TIMER_PERIOD))
@@ -39,6 +40,7 @@ int main() {
   display_init();
   touchscreen_init(CONFIG_TOUCHSCREEN_TIMER_PERIOD);
   gameControl_init();
+  sound_runTest();
 
   // Initialize timer interrupts
   interrupts_init();
