@@ -9,6 +9,7 @@
 #include <math.h>
 #include "plane.h"
 #include <stdlib.h>
+#include "powerup.h"
 
 missile_t missiles[CONFIG_MAX_TOTAL_MISSILES]; //Init missiles
 missile_t *enemy_missiles = &(missiles[0]); //Start of enemy missiles
@@ -73,6 +74,7 @@ void gameControl_init(){
 
   #ifdef LAB8_M3
   plane_init(&missiles[PLANE_MISSILE]);//Init the plane
+  powerup_init();
   #endif
 
   //Set background color ---MAYBE needs to be taken out
@@ -108,6 +110,7 @@ void gameControl_tick(){
     drawStats(DISPLAY_BLACK); //Draw stats on top of screen (Erase)
     #ifdef LAB8_M3
     plane_tick(); //Tick the plane
+    powerup_tick();
     #endif
 
     //Read enemy missiles impacted
@@ -165,6 +168,16 @@ void gameControl_tick(){
     for(uint16_t i=0; i < CONFIG_MAX_TOTAL_MISSILES; i++){
         if(missiles[i].radius > computeDistance(planeCoords.x, planeCoords.y, missiles[i].x_current, missiles[i].y_current)){
             plane_explode(); //Set the plane to explode and move on
+            break;
+        }
+    }
+    display_point_t powerupCoords = powerup_getXY();
+    for(uint16_t i=0; i < CONFIG_MAX_TOTAL_MISSILES; i++){
+        if(missiles[i].radius > computeDistance(powerupCoords.x, powerupCoords.y, missiles[i].x_current, missiles[i].y_current)){
+            powerup_explode(); //Set the plane to explode and move on
+            for (uint16_t i = 0; i < CONFIG_MAX_TOTAL_MISSILES; i++) {
+                missiles[i].explode_me = true;    
+            }
             break;
         }
     }
