@@ -1,5 +1,7 @@
 #ifndef CONFIG_H
 #define CONFIG_H
+#include <stdlib.h>
+#include <stdio.h>
 
 #define CONFIG_TOUCHSCREEN_TIMER_PERIOD 10.0E-3
 #define CONFIG_GAME_TIMER_PERIOD 45.0E-3
@@ -11,8 +13,8 @@
   (CONFIG_MAX_ENEMY_MISSILES + CONFIG_MAX_PLAYER_MISSILES +                    \
    CONFIG_MAX_PLANE_MISSILES)
 
-// Speed of enemby missile
-#define CONFIG_ENEMY_MISSILE_DISTANCE_PER_SECOND 35
+// Speed of enemy missile
+#define CONFIG_ENEMY_MISSILE_DISTANCE_PER_SECOND (rand()%30+30)
 #define CONFIG_ENEMY_MISSILE_DISTANCE_PER_TICK                                 \
   (CONFIG_ENEMY_MISSILE_DISTANCE_PER_SECOND * CONFIG_GAME_TIMER_PERIOD)
 
