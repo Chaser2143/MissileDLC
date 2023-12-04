@@ -315,7 +315,7 @@ void missile_tick(missile_t *missile){
             }
             if(getPercentage(missile) >= 1){ //Did it reach its destination?
                 if((missile->type == MISSILE_TYPE_ENEMY) || (missile->type == MISSILE_TYPE_PLANE)){ //If enemy, it reached its end and should die
-                    missile->currentState = dead_st;//dead
+                    missile->currentState = explode_grow_st;//explode on impact
                     drawMovingLine(missile, false); //Erase path
                     missile->impacted = true; //Used for counting number of impacted missiles
                 }
