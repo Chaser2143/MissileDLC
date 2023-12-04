@@ -18,6 +18,8 @@ For questions, contact Brad Hutchings or Jeff Goeders, https://ece.byu.edu/
 #include "sounds/pacmanDeath.wav.h"
 #include "sounds/powerUp48k.wav.h"
 #include "sounds/screamAndDie48k.wav.h"
+#include "sounds/johnCena.wav.h"
+#include "sounds/robloxOof.wav.h"
 #include "timer_ps.h"
 #include "xparameters.h"
 #include "xiicps.h"
@@ -274,6 +276,14 @@ void sound_setSound(sound_sounds_t sound) {
     sound_array = soundOfSilence;
     sound_sampleCount = ONE_SECOND_OF_SOUND_ARRAY_SIZE;
     break;
+  case sound_johnCena_e:
+    sound_array = game_intro_wav;
+    sound_sampleCount = JOHN_CENA_NUMBER_OF_SAMPLES;
+    break;
+  case sound_robloxOof_e:
+    sound_array = robloxOof;
+    sound_sampleCount = ROBLOX_OOF_NUMBER_OF_SAMPLES;
+    break;
   default:
     printf("sound_setSound(): bogus sound value(%d)\n", sound);
   }
@@ -290,6 +300,50 @@ void sound_stopSound() {
   sound_playSoundFlag = false; // disable the state-machine.
   currentState =
       sound_wait_st; // Force the state-machine back to the wait state.
+}
+
+// Initializes the sound functionality
+void sound_initialize() {
+  sound_init();
+}
+
+// Plays a intro noise
+void sound_introSong() {
+  sound_tick();
+  sound_setSound(sound_johnCena_e);
+  printf("playing groundHit\n");
+  sound_startSound();
+  while (1) {
+    sound_tick();
+    if (!sound_isBusy())
+      break;
+  }
+}
+
+// Plays the game over noise
+void sound_gameOver() {
+  sound_tick();
+  sound_setSound(sound_gameOver_e);
+  printf("playing game over\n");
+  sound_startSound();
+  while (1) {
+    sound_tick();
+    if (!sound_isBusy())
+      break;
+  }
+}
+
+// Plays a noise for the ufo entrance
+void sound_ufo() {
+  sound_tick();
+  sound_setSound(sound_gunReload_e);
+  printf("playing ufo\n");
+  sound_startSound();
+  while (1) {
+    sound_tick();
+    if (!sound_isBusy())
+      break;
+  }
 }
 
 // Plays several sounds.

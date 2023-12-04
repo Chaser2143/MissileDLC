@@ -7,6 +7,7 @@
 #include <math.h>
 #include <stdlib.h>
 #include "missile.h"
+#include "sound.h"
 
 #define SCREEN_WIDTH 320 //Display Width
 #define PLANE_HEIGHT 70 //Height of plane
@@ -152,6 +153,7 @@ void plane_tick(){
             if(DEBUG_FLAG){
                 printf("%d is the firing point for the missile\n", missile_launch_x);
             }
+            sound_ufo();
             currentState = plane_move_st;
             break;
         case plane_move_st: //Keeping these two conditions separate for scoring purposes
@@ -180,8 +182,11 @@ void plane_tick(){
                 currentState = plane_init_st;
                 length = 0; //Reset Plane Specs
                 x_current = x_origin;
+                y_origin = (rand()%100);
+                y_current = y_origin;
                 isExploded = false;
                 missile_launched = false;
+                resetTicks = ((rand()%10)+5)/CONFIG_GAME_TIMER_PERIOD; //Random respawn time
             }
             break;
         default:
