@@ -182,8 +182,11 @@ void plane_tick(){
                 currentState = plane_init_st;
                 length = 0; //Reset Plane Specs
                 x_current = x_origin;
+                y_origin = (rand()%100);
+                y_current = y_origin;
                 isExploded = false;
                 missile_launched = false;
+                resetTicks = ((rand()%10)+5)/CONFIG_GAME_TIMER_PERIOD; //Random respawn time
             }
             break;
         default:
