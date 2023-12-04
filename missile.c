@@ -110,6 +110,10 @@ void missile_init_enemy(missile_t *missile){
     // Set x,y destination to random location along the bottom of the screen
     missile->y_dest = SCREEN_HEIGHT;
     missile->x_dest = rand() % SCREEN_WIDTH;
+    // Set missile speed
+    float a = 1.5;
+    float speed_multiplier = (((float)rand()/(float)(RAND_MAX)) * a);
+    missile->speed = speed_multiplier;
     // Set current state
     missile->currentState = init_st;
     init_general(missile); //General Init
@@ -174,7 +178,7 @@ void updateLength(missile_t *missile){
             missile->length = ((missile->length) + (CONFIG_PLAYER_MISSILE_DISTANCE_PER_TICK * double_speed));
             break;
         case MISSILE_TYPE_ENEMY:
-            missile->length = ((missile->length) + (CONFIG_ENEMY_MISSILE_DISTANCE_PER_TICK) * double_speed);
+            missile->length = (((missile->length) + (missile->speed + CONFIG_ENEMY_MISSILE_DISTANCE_PER_TICK) * double_speed));
             break;
         case MISSILE_TYPE_PLANE:
             missile->length = ((missile->length) + (CONFIG_ENEMY_MISSILE_DISTANCE_PER_TICK * double_speed));
