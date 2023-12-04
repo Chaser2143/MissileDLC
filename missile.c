@@ -27,7 +27,8 @@
 #define explode_shrink_st_msg "Shrink State\n" //ExplodeShrink
 #define dead_st_msg "Dead State\n" //Dead
 
-#define double_speed 2 //Used for doubling the speed as we only tick our missiles half as often
+#define DOUBLE_SPEED 2 //Used for doubling the speed as we only tick our missiles half as often
+#define TRIPLE_SPEED 3
 
 //States
 enum missile_st {
@@ -175,13 +176,13 @@ void updateLength(missile_t *missile){
     }
     switch(missile->type){ //Increments missile length
         case MISSILE_TYPE_PLAYER:
-            missile->length = ((missile->length) + (CONFIG_PLAYER_MISSILE_DISTANCE_PER_TICK * double_speed));
+            missile->length = ((missile->length) + (CONFIG_PLAYER_MISSILE_DISTANCE_PER_TICK * DOUBLE_SPEED));
             break;
         case MISSILE_TYPE_ENEMY:
-            missile->length = (((missile->length) + (missile->speed + CONFIG_ENEMY_MISSILE_DISTANCE_PER_TICK) * double_speed));
+            missile->length = (((missile->length) + (missile->speed + CONFIG_ENEMY_MISSILE_DISTANCE_PER_TICK) * DOUBLE_SPEED));
             break;
         case MISSILE_TYPE_PLANE:
-            missile->length = ((missile->length) + (CONFIG_ENEMY_MISSILE_DISTANCE_PER_TICK * double_speed));
+            missile->length = ((missile->length) + (CONFIG_ENEMY_MISSILE_DISTANCE_PER_TICK * DOUBLE_SPEED));
             break;
     }
     if (DEBUG_FLAG){
@@ -219,12 +220,12 @@ void updateLocation(missile_t *missile, double percentage){
 
 //Increase radius for growing missile explosion
 void increaseRadius(missile_t *missile){
-    missile->radius = (missile->radius + (CONFIG_EXPLOSION_RADIUS_CHANGE_PER_TICK * double_speed));
+    missile->radius = (missile->radius + (CONFIG_EXPLOSION_RADIUS_CHANGE_PER_TICK * TRIPLE_SPEED));
 }
 
 //Decrease radius for shrinking missile explosion
 void decreaseRadius(missile_t *missile){
-    missile->radius = (missile->radius - (CONFIG_EXPLOSION_RADIUS_CHANGE_PER_TICK * double_speed));
+    missile->radius = (missile->radius - (CONFIG_EXPLOSION_RADIUS_CHANGE_PER_TICK * DOUBLE_SPEED));
 }
 
 //Draw a circle if true, else erase a circle
