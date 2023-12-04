@@ -9,7 +9,7 @@
 #include "touchscreen.h"
 #include "sound.h"
 
-#define RUNTIME_S 60
+#define RUNTIME_S 240
 #define RUNTIME_TICKS ((int)(RUNTIME_S / CONFIG_GAME_TIMER_PERIOD))
 
 volatile bool interrupt_flag;
@@ -58,7 +58,7 @@ int main() {
 
   sound_initialize(); // Initializes the sound functionality
   //sound_runTest(); // Plays all the possible sounds to test them at the beginning of the game
-  //sound_introSong();
+  sound_introSong(); // Plays the intro song for the game start
 
   // Main game loop
   while ((isr_triggered_count < RUNTIME_TICKS) && !getGameStatus()) {
@@ -69,6 +69,4 @@ int main() {
 
     gameControl_tick();
   }
-  printf("Handled %d of %d interrupts\n", isr_handled_count,
-         isr_triggered_count);
 }

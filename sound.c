@@ -310,8 +310,34 @@ void sound_initialize() {
 // Plays a intro noise
 void sound_introSong() {
   sound_tick();
-  sound_setSound(sound_gameStart_e);
+  sound_setSound(sound_johnCena_e);
   printf("playing groundHit\n");
+  sound_startSound();
+  while (1) {
+    sound_tick();
+    if (!sound_isBusy())
+      break;
+  }
+}
+
+// Plays the game over noise
+void sound_gameOver() {
+  sound_tick();
+  sound_setSound(sound_gameOver_e);
+  printf("playing game over\n");
+  sound_startSound();
+  while (1) {
+    sound_tick();
+    if (!sound_isBusy())
+      break;
+  }
+}
+
+// Plays a noise for the ufo entrance
+void sound_ufo() {
+  sound_tick();
+  sound_setSound(sound_gunReload_e);
+  printf("playing ufo\n");
   sound_startSound();
   while (1) {
     sound_tick();

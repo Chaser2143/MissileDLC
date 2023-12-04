@@ -9,6 +9,7 @@
 #include <math.h>
 #include "plane.h"
 #include <stdlib.h>
+#include "sound.h"
 
 missile_t missiles[CONFIG_MAX_TOTAL_MISSILES]; //Init missiles
 missile_t *enemy_missiles = &(missiles[0]); //Start of enemy missiles
@@ -129,6 +130,7 @@ void gameControl_tick(){
             number_enemy_missiles_impacted++;
             if(number_enemy_missiles_impacted == 30){
                 game_over = true;
+                sound_gameOver();
             }
         }
     }

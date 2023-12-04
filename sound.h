@@ -86,4 +86,6 @@ void sound_introSong();
 
 void sound_ufo();
 
+void sound_gameOver();
+
 #endif /* SOUND_H_ */
