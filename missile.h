@@ -48,6 +48,9 @@ typedef struct {
   // ground.
   bool impacted;
 
+  // Used to handle different speeds of enemy missiles
+  uint32_t speed;
+  
 } missile_t;
 
 ////////// State Machine INIT Functions //////////
