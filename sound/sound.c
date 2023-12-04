@@ -18,6 +18,12 @@ For questions, contact Brad Hutchings or Jeff Goeders, https://ece.byu.edu/
 #include "sounds/powerUp48k.wav.h"
 #include "sounds/screamAndDie48k.wav.h"
 
+#include "sounds/teamOne.wav.h"
+#include "sounds/teamTwo.wav.h"
+#include "sounds/johnCena.wav.h"
+#include "sounds/robloxOof.wav.h"
+#include "sounds/newShot.wav.h"
+
 #include "timer_ps.h"
 #include "xiicps.h"
 #include "xil_printf.h"
