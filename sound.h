@@ -33,7 +33,9 @@ typedef enum {
   sound_loseLife_e,        // Sound made when you are hit enough times.
   sound_gameOver_e,        // Sound made when the game is over.
   sound_returnToBase_e,    // Remind the user that the game is over.
-  sound_oneSecondSilence_e // One second of silence.
+  sound_oneSecondSilence_e, // One second of silence.
+  sound_johnCena_e,
+  sound_robloxOof_e
 } sound_sounds_t;
 
 // Just provide 4 volume settings.
@@ -77,5 +79,11 @@ void sound_stopSound();
 // To invoke, just place this in your main.
 // Completely stand alone, doesn't require interrupts, etc.
 void sound_runTest();
+
+void sound_initialize();
+
+void sound_introSong();
+
+void sound_ufo();
 
 #endif /* SOUND_H_ */

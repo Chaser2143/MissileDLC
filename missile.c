@@ -6,6 +6,7 @@
 #include <stdlib.h>
 #include "missile.h"
 #include "display.h"
+#include "sound.h"
 
 #define SCREEN_WIDTH 320 //Display Width
 #define SCREEN_HEIGHT 240 //Display Height

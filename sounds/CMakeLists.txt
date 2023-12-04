@@ -5,11 +5,13 @@ gameBoyStartup.wav.c
 gameOver48k.wav.c
 gunEmpty48k.wav.c
 ouch48k.wav.c
-pacman_beginning_48k.wav.c#
+pacman_beginning_48k.wav.c
 pacmanDeath.wav.c
 powerUp48k.wav.c
 powerUp48k.wav.c
 screamAndDie48k.wav.c
+johnCena.wav.c
+robloxOof.wav.c
 )
 
 target_link_libraries(sounds ${330_LIBS})

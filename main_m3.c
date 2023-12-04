@@ -40,7 +40,6 @@ int main() {
   display_init();
   touchscreen_init(CONFIG_TOUCHSCREEN_TIMER_PERIOD);
   gameControl_init();
-  sound_runTest();
 
   // Initialize timer interrupts
   interrupts_init();
@@ -56,6 +55,10 @@ int main() {
   intervalTimer_enableInterrupt(INTERVAL_TIMER_1);
   intervalTimer_start(INTERVAL_TIMER_0);
   intervalTimer_start(INTERVAL_TIMER_1);
+
+  sound_initialize(); // Initializes the sound functionality
+  //sound_runTest(); // Plays all the possible sounds to test them at the beginning of the game
+  //sound_introSong();
 
   // Main game loop
   while ((isr_triggered_count < RUNTIME_TICKS) && !getGameStatus()) {
