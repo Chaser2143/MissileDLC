@@ -24,3 +24,6 @@ To increase this effect, enemy missiles will also explode upon impact when they 
 (Extra) UFO spawns at random times in game.
 
 (Extra) UFO has randomized path.
+
+(Extra) Game Over State
+- Game ends at 30 impacts

@@ -40,6 +40,11 @@ bool getGameStatus(){
     return game_over;
 }
 
+// //Draws all the buildings at the start of the 
+// void drawBuildings(){
+
+// }
+
 //Draw the stats at the top of the screen
 void drawStats(uint16_t color){
     display_setCursor(START_WIDTH, START_HEIGHT);
@@ -122,6 +127,9 @@ void gameControl_tick(){
         if(missiles[i].impacted){ //Only enemy and plane missiles are ever set to impacted, so I can count them
             missiles[i].impacted = false; //Reset this
             number_enemy_missiles_impacted++;
+            if(number_enemy_missiles_impacted == 30){
+                game_over = true;
+            }
         }
     }
 
