@@ -40,10 +40,45 @@ bool getGameStatus(){
     return game_over;
 }
 
-// //Draws all the buildings at the start of the 
-// void drawBuildings(){
+//Draws all the buildings at the start of the game
+void drawBuildings(){
+    display_fillRect(10, 180, 40, 60, DISPLAY_BLUE); //bldg 1
+    display_fillRect(25, 225, 5, 5, DISPLAY_WHITE);
+    display_fillRect(15, 225, 5, 5, DISPLAY_WHITE);
+    display_fillRect(35, 225, 5, 5, DISPLAY_WHITE);
 
-// }
+    display_fillRect(25, 205, 5, 5, DISPLAY_WHITE);
+    display_fillRect(15, 205, 5, 5, DISPLAY_WHITE);
+    display_fillRect(35, 205, 5, 5, DISPLAY_WHITE);
+
+    display_fillRect(60, 220, 30, 20, DISPLAY_DARK_GREEN); //bldg 2
+    display_fillRect(65, 225, 5, 5, DISPLAY_WHITE);
+    display_fillRect(70, 225, 5, 5, DISPLAY_WHITE);
+
+    display_fillRect(100, 220, 40, 20, DISPLAY_DARK_MAGENTA); //bldg 3
+    display_fillRect(115, 225, 5, 5, DISPLAY_WHITE);
+    display_fillRect(125, 225, 5, 5, DISPLAY_WHITE);
+    display_fillRect(130, 225, 5, 5, DISPLAY_WHITE);
+
+    display_fillRect(150, 205, 30, 35, DISPLAY_DARK_CYAN); //bldg 4
+    display_fillRect(155, 225, 5, 5, DISPLAY_WHITE);
+    display_fillRect(160, 225, 5, 5, DISPLAY_WHITE);
+
+    display_fillRect(200, 220, 40, 20, DISPLAY_DARK_RED); //bldg 5
+    display_fillRect(215, 225, 5, 5, DISPLAY_WHITE);
+    display_fillRect(225, 225, 5, 5, DISPLAY_WHITE);
+    display_fillRect(230, 225, 5, 5, DISPLAY_WHITE);
+
+    display_fillRect(270, 220, 30, 20, DISPLAY_DARK_YELLOW); //bldg 6
+    display_fillRect(275, 225, 5, 5, DISPLAY_WHITE);
+    display_fillRect(280, 225, 5, 5, DISPLAY_WHITE);
+
+    display_fillRect(310, 180, 20, 60, DISPLAY_CYAN); //bldg 7
+    display_fillRect(315, 185, 5, 5, DISPLAY_WHITE);
+    display_fillRect(315, 195, 5, 5, DISPLAY_WHITE);
+    display_fillRect(315, 205, 5, 5, DISPLAY_WHITE);
+    display_fillRect(315, 215, 5, 5, DISPLAY_WHITE);
+}
 
 //Draw the stats at the top of the screen
 void drawStats(uint16_t color){
@@ -89,6 +124,7 @@ void gameControl_init(){
 
   //Set background color ---MAYBE needs to be taken out
   display_fillScreen(CONFIG_BACKGROUND_COLOR);
+  drawBuildings();
 }
 
 // Tick the game control logic
