@@ -16,4 +16,6 @@ void gameControl_tick();
 //Returns a bool of whether or not the game is over
 bool getGameStatus();
 
+bool didYouWin();
+
 #endif /* GAMECONTROL */
