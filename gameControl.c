@@ -168,8 +168,8 @@ void gameControl_tick(){
             missiles[i].impacted = false; //Reset this
             number_enemy_missiles_impacted++;
             if(number_enemy_missiles_impacted == 30){
-                game_over = true;
                 sound_gameOver();
+                game_over = true;
             }
         }
     }
@@ -227,7 +227,11 @@ void gameControl_tick(){
     }
     display_point_t powerupCoords = powerup_getXY();
     for(uint16_t i=0; i < CONFIG_MAX_TOTAL_MISSILES; i++){
-        if(missiles[i].radius > computeDistance(powerupCoords.x, powerupCoords.y, missiles[i].x_current, missiles[i].y_current)){
+        if((missiles[i].radius > computeDistance(powerupCoords.x, powerupCoords.y, missiles[i].x_current, missiles[i].y_current)) ||
+            (missiles[i].radius > computeDistance(powerupCoords.x-12, powerupCoords.y, missiles[i].x_current, missiles[i].y_current)) ||
+            (missiles[i].radius > computeDistance(powerupCoords.x+12, powerupCoords.y, missiles[i].x_current, missiles[i].y_current)) ||
+            (missiles[i].radius > computeDistance(powerupCoords.x, powerupCoords.y+10, missiles[i].x_current, missiles[i].y_current)) || 
+            (missiles[i].radius > computeDistance(powerupCoords.x, powerupCoords.y-10, missiles[i].x_current, missiles[i].y_current))){
             powerup_explode(); //Set the plane to explode and move on
             for (uint16_t i = 0; i < CONFIG_MAX_TOTAL_MISSILES; i++) {
                 missiles[i].explode_me = true;    

@@ -14,18 +14,19 @@ For questions, contact Brad Hutchings or Jeff Goeders, https://ece.byu.edu/
 #include "sounds/gameBoyStartup.wav.h"
 #include "sounds/gameOver48k.wav.h"
 #include "sounds/gunEmpty48k.wav.h"
+#include "sounds/johnCena.wav.h"
+#include "sounds/missionFailed.wav.h"
 #include "sounds/ouch48k.wav.h"
 #include "sounds/pacmanDeath.wav.h"
 #include "sounds/powerUp48k.wav.h"
-#include "sounds/screamAndDie48k.wav.h"
-#include "sounds/johnCena.wav.h"
 #include "sounds/robloxOof.wav.h"
+#include "sounds/screamAndDie48k.wav.h"
 #include "timer_ps.h"
-#include "xparameters.h"
 #include "xiicps.h"
 #include "xil_io.h"
 #include "xil_printf.h"
 #include "xil_types.h"
+#include "xparameters.h"
 
 /***************************************************************
  * Quite a bit of this code was obtained from digilent.com
@@ -284,6 +285,10 @@ void sound_setSound(sound_sounds_t sound) {
     sound_array = robloxOof;
     sound_sampleCount = ROBLOX_OOF_NUMBER_OF_SAMPLES;
     break;
+  case sound_missionFailed_e:
+    sound_array = mission_failed_wav;
+    sound_sampleCount = MISSION_FAILED_NUMBER_SAMPLES;
+    break;
   default:
     printf("sound_setSound(): bogus sound value(%d)\n", sound);
   }
@@ -303,15 +308,26 @@ void sound_stopSound() {
 }
 
 // Initializes the sound functionality
-void sound_initialize() {
-  sound_init();
-}
+void sound_initialize() { sound_init(); }
 
 // Plays a intro noise
 void sound_introSong() {
   sound_tick();
   sound_setSound(sound_gameStart_e);
   printf("playing intro\n");
+  sound_startSound();
+  while (1) {
+    sound_tick();
+    if (!sound_isBusy())
+      break;
+  }
+}
+
+// Plays a mission failed noise
+void sound_missionFailed() {
+  sound_tick();
+  sound_setSound(sound_missionFailed_e);
+  printf("playing mission failed\n");
   sound_startSound();
   while (1) {
     sound_tick();

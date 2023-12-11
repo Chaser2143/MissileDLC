@@ -12,6 +12,7 @@ powerUp48k.wav.c
 screamAndDie48k.wav.c
 johnCena.wav.c
 robloxOof.wav.c
+missionFailed.wav.c
 )
 
 target_link_libraries(sounds ${330_LIBS})
