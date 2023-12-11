@@ -8,9 +8,16 @@
 #include "intervalTimer.h"
 #include "touchscreen.h"
 #include "sound.h"
+#include "display.h"
 
 #define RUNTIME_S 240
 #define RUNTIME_TICKS ((int)(RUNTIME_S / CONFIG_GAME_TIMER_PERIOD))
+
+#define START_HEIGHT 80 //Start text height
+#define START_WIDTH 40 //Start text width
+#define START_WIDTH2 30 //Start text width
+#define SECOND_WIDTH 160 //Second Width for stats
+#define TEXT_SIZE 5 //Text size
 
 volatile bool interrupt_flag;
 
@@ -29,6 +36,24 @@ void game_isr() {
 void touchscreen_isr() {
   intervalTimer_ackInterrupt(INTERVAL_TIMER_1);
   touchscreen_tick();
+}
+
+void game_win_cutscene(){
+  display_fillScreen(CONFIG_BACKGROUND_COLOR);
+  display_setCursor(START_WIDTH, START_HEIGHT);
+  display_setTextColor(DISPLAY_WHITE);
+  display_setTextWrap(true);
+  display_setTextSize(TEXT_SIZE);
+  display_print("YOU WON!");
+}
+
+void game_loss_cutscene(){
+  display_fillScreen(CONFIG_BACKGROUND_COLOR);
+  display_setCursor(START_WIDTH2, START_HEIGHT);
+  display_setTextColor(DISPLAY_WHITE);
+  display_setTextWrap(true);
+  display_setTextSize(TEXT_SIZE);
+  display_print("GAME OVER");
 }
 
 // Milestone 3 test application
@@ -70,9 +95,9 @@ int main() {
     gameControl_tick();
   }
   if (didYouWin()) {
-
+    game_win_cutscene();
   }
   else {
-    
+    game_loss_cutscene();
   }
 }
