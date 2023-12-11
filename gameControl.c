@@ -171,7 +171,7 @@ void gameControl_tick(){
         if(missiles[i].impacted){ //Only enemy and plane missiles are ever set to impacted, so I can count them
             missiles[i].impacted = false; //Reset this
             number_enemy_missiles_impacted++;
-            if(number_enemy_missiles_impacted == 30){
+            if(number_enemy_missiles_impacted == 15){
                 game_over = true;
                 game_win = false;
                 sound_gameOver();
