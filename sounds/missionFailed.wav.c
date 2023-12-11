@@ -9,6 +9,8 @@
 * Bits/Sample:		16
 **********************************************************************/
 
+#include <stdint.h>
+
 #define MISSION_FAILED_NUM_ELEMENTS 144336
 
 unsigned long mission_failed_wav[MISSION_FAILED_NUM_ELEMENTS] = {
