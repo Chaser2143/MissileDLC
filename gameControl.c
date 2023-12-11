@@ -33,6 +33,7 @@ missile_t *player_missiles = &(missiles[CONFIG_MAX_ENEMY_MISSILES]); //Start of 
 static bool first_half = true;
 
 static bool game_over = false;
+static bool game_win = false;
 
 static uint16_t number_player_missiles_shot = 0;
 static uint16_t number_enemy_missiles_impacted = 0;
@@ -40,6 +41,9 @@ static uint16_t number_enemy_missiles_impacted = 0;
 //Returns if the game is over or not
 bool getGameStatus(){
     return game_over;
+}
+bool didYouWin(){
+    return game_win;
 }
 
 //Draws all the buildings at the start of the game
@@ -169,6 +173,7 @@ void gameControl_tick(){
             number_enemy_missiles_impacted++;
             if(number_enemy_missiles_impacted == 30){
                 game_over = true;
+                game_win = false;
                 sound_gameOver();
             }
         }
@@ -183,7 +188,6 @@ void gameControl_tick(){
     // • If touchscreen touched, launch player missile (if one is available)
     // Check for dead player missiles and re-initialize
     if(touchscreen_get_status() == TOUCHSCREEN_RELEASED){
-
         for (uint16_t i = 0; i < CONFIG_MAX_PLAYER_MISSILES; i++){
             if (missile_is_dead(&player_missiles[i])) {
                 missile_init_player(&player_missiles[i], touchscreen_get_location().x, touchscreen_get_location().y);
@@ -221,6 +225,7 @@ void gameControl_tick(){
     for(uint16_t i=0; i < CONFIG_MAX_TOTAL_MISSILES; i++){
         if(missiles[i].radius > computeDistance(planeCoords.x, planeCoords.y, missiles[i].x_current, missiles[i].y_current)){
             plane_explode(); //Set the plane to explode and move on
+            game_win = true;
             game_over = true; //End the game
             break;
         }
