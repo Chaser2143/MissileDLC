@@ -69,5 +69,10 @@ int main() {
 
     gameControl_tick();
   }
+  if (didYouWin()) {
 
+  }
+  else {
+    
+  }
 }
