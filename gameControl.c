@@ -39,7 +39,7 @@ static uint16_t number_player_missiles_shot = 0;
 static uint16_t number_enemy_missiles_impacted = 0;
 
 //Returns if the game is over or not
-bool getGameStatus(){
+bool getGameStatus() {
     return game_over;
 }
 bool didYouWin(){
@@ -175,6 +175,7 @@ void gameControl_tick(){
                 game_over = true;
                 game_win = false;
                 sound_gameOver();
+                game_over = true;
             }
         }
     }

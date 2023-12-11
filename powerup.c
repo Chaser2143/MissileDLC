@@ -6,6 +6,7 @@
 #include "config.h"
 #include <math.h>
 #include <stdlib.h>
+#include "sound.h"
 
 #define SCREEN_WIDTH 320 //Display Width
 #define PLANE_HEIGHT 70 //Height of plane
@@ -105,6 +106,7 @@ void powerup_tick(){
         case powerup_move_st: //Keeping these two conditions separate for scoring purposes
             if(isExploded){ //if there is a collision
                 drawPowerup(true); //Erase plane
+                sound_powerup();
                 resetPowerupTicks = 50;
                 currentState = powerup_dead_st;
                 break;

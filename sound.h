@@ -35,7 +35,8 @@ typedef enum {
   sound_returnToBase_e,    // Remind the user that the game is over.
   sound_oneSecondSilence_e, // One second of silence.
   sound_johnCena_e,
-  sound_robloxOof_e
+  sound_robloxOof_e,
+  sound_missionFailed_e
 } sound_sounds_t;
 
 // Just provide 4 volume settings.
@@ -87,5 +88,9 @@ void sound_introSong();
 void sound_ufo();
 
 void sound_gameOver();
+
+void sound_powerup();
+
+void sound_missionFailed();
 
 #endif /* SOUND_H_ */
