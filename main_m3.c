@@ -54,6 +54,7 @@ void game_loss_cutscene(){
   display_setTextWrap(true);
   display_setTextSize(TEXT_SIZE);
   display_print("GAME OVER");
+  sound_missionFailed();
 }
 
 // Milestone 3 test application
