@@ -310,8 +310,21 @@ void sound_initialize() {
 // Plays a intro noise
 void sound_introSong() {
   sound_tick();
+  sound_setSound(sound_gameStart_e);
+  printf("playing intro\n");
+  sound_startSound();
+  while (1) {
+    sound_tick();
+    if (!sound_isBusy())
+      break;
+  }
+}
+
+// Plays a powerup noise
+void sound_powerup() {
+  sound_tick();
   sound_setSound(sound_johnCena_e);
-  printf("playing groundHit\n");
+  printf("playing powerup\n");
   sound_startSound();
   while (1) {
     sound_tick();

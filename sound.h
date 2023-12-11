@@ -88,4 +88,6 @@ void sound_ufo();
 
 void sound_gameOver();
 
+void sound_powerup();
+
 #endif /* SOUND_H_ */
